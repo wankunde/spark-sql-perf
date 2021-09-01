@@ -18,6 +18,7 @@ sparkVersion := "3.0.0"
 
 sparkComponents ++= Seq("sql", "hive", "mllib")
 
+resolvers += Resolver.mavenLocal
 
 initialCommands in console :=
   """
@@ -33,6 +34,8 @@ initialCommands in console :=
   """.stripMargin
 
 libraryDependencies += "com.github.scopt" %% "scopt" % "3.7.1"
+
+libraryDependencies += "org.apache.spark" %% "spark-hive" % sparkVersion.value classifier "tests"
 
 libraryDependencies += "com.twitter" %% "util-jvm" % "6.45.0" % "provided"
 
